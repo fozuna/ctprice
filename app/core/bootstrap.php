@@ -28,6 +28,11 @@ define('APP_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'app');
 define('PUBLIC_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'public');
 define('STORAGE_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'storage');
 
+// Logging de erros em arquivo
+@mkdir(STORAGE_PATH, 0775, true);
+ini_set('log_errors', '1');
+ini_set('error_log', STORAGE_PATH . DIRECTORY_SEPARATOR . 'php-error.log');
+
 // Garantir diretório de currículos
 if (!is_dir(STORAGE_PATH . DIRECTORY_SEPARATOR . 'resumes')) {
     @mkdir(STORAGE_PATH . DIRECTORY_SEPARATOR . 'resumes', 0775, true);
