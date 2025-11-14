@@ -3,7 +3,13 @@ DirectoryIndex index.php
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteCond %{HTTP_HOST} ^(rh\.traxter\.com\.br)$ [NC]
+  # Dev local: encaminha para /ctprice/public
+  RewriteCond %{HTTP_HOST} ^(localhost|127\.0\.0\.1)$ [NC]
+  RewriteCond %{REQUEST_URI} !^/ctprice/public/
+  RewriteRule ^(.*)$ /ctprice/public/$1 [L]
+
+  # Produção: subdomínio ctprice.traxter.com.br
+  RewriteCond %{HTTP_HOST} ^(ctprice\.traxter\.com\.br)$ [NC]
   RewriteCond %{HTTPS} !=on
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   RewriteCond %{REQUEST_URI} !^/public/

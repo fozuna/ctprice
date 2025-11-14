@@ -22,8 +22,18 @@ class Config
             return ($v !== null && $v !== '') ? $v : $d;
         };
         $isCliServer = (PHP_SAPI === 'cli-server');
-        $defaultBase = '';
-        $base = $get('APP_BASE_URL', $isCliServer ? '' : $defaultBase);
+        $host = $_SERVER['HTTP_HOST'] ?? '';
+        $reqPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+        $envBase = $get('APP_BASE_URL', null);
+        if ($envBase !== null && $envBase !== '') {
+            $base = rtrim($envBase, '/');
+        } else {
+            if (stripos($host, 'localhost') !== false || $host === '127.0.0.1' || preg_match('#^/ctprice/public(?:/|$)#', $reqPath)) {
+                $base = '/ctprice/public';
+            } else {
+                $base = '';
+            }
+        }
         $envName = $get('APP_ENV', 'dev');
         return [
             'name' => 'CT Price - Sistema de Gestão de RH',
