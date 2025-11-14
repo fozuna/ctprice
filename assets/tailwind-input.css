@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom theme tokens (compatible with classes already used) */
+@layer base {
+  :root {
+    --ctgreen: #10E36B;
+    --ctdark: #057038;
+    --ctpblue: #00222C;
+  }
+  body { font-family: 'Montserrat', system-ui, -apple-system, sans-serif; }
+}
+
+@layer utilities {
+  .text-ctpblue { color: #00222C; }
+  .text-ctgreen { color: #10E36B; }
+  .bg-ctgreen { background-color: #10E36B; }
+  .bg-ctdark { background-color: #057038; }
+  .bg-ctpblue { background-color: #00222C; }
+  .border-ctgreen { border-color: #10E36B; }
+}

@@ -1,0 +1,13 @@
+# Desativa listagem de diretórios na raiz
+Options -Indexes
+
+# Garante que index.php seja o arquivo padrão
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /ctprice/
+  # Redireciona qualquer acesso fora de /public para o front controller em /public
+  RewriteCond %{REQUEST_URI} !^/ctprice/public/
+  RewriteRule ^(.*)$ public/$1 [R=302,L]
+</IfModule>
