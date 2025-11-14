@@ -1,0 +1,8 @@
+﻿# Ignorar segredos e dados gerados
+/.env
+/storage/ratelimit/*.json
+/storage/resumes/*
+/public/uploads/logos/*
+*.log
+.DS_Store
+Thumbs.db

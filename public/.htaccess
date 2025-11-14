@@ -1,17 +1,12 @@
-# Desativa listagem de diretórios em public
 Options -Indexes
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /ctprice/public/
-  # Roteamento para front controller
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ index.php [QSA,L]
 
-  # Bloqueio de extensões sensíveis
   RewriteRule ^.*\.(env|ini|log|bak|sql|sh|cmd|bat)$ - [F,L]
-  # Impede acesso direto a outros .php (não index.php)
   RewriteCond %{REQUEST_URI} !/index\.php$
   RewriteRule ^.*\.php$ - [F,L]
 </IfModule>
