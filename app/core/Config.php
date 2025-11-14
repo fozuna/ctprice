@@ -22,7 +22,7 @@ class Config
             return ($v !== null && $v !== '') ? $v : $d;
         };
         $isCliServer = (PHP_SAPI === 'cli-server');
-        $defaultBase = '/ctprice/public';
+        $defaultBase = '';
         $base = $get('APP_BASE_URL', $isCliServer ? '' : $defaultBase);
         $envName = $get('APP_ENV', 'dev');
         return [
