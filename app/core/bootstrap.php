@@ -19,8 +19,18 @@ if ($app['env'] === 'dev') {
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
 } else {
+    error_reporting(E_ALL);
     ini_set('display_errors', '0');
 }
+
+set_error_handler(function ($severity, $message, $file, $line) {
+    $msg = '[' . date('c') . "] PHPERROR {$severity} {$message} in {$file}:{$line}\n";
+    @file_put_contents(STORAGE_PATH . DIRECTORY_SEPARATOR . 'php-error.log', $msg, FILE_APPEND);
+});
+set_exception_handler(function ($ex) {
+    $msg = '[' . date('c') . '] EXCEPTION ' . get_class($ex) . ': ' . $ex->getMessage() . "\n";
+    @file_put_contents(STORAGE_PATH . DIRECTORY_SEPARATOR . 'php-error.log', $msg, FILE_APPEND);
+});
 
 // Constantes de caminho
 define('BASE_PATH', dirname(__DIR__, 2));

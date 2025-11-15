@@ -16,12 +16,12 @@ class Database
             try {
                 self::$pdo = new \PDO($config['dsn'], $config['user'], $config['pass'], $config['options']);
             } catch (\PDOException $e) {
-                // Em desenvolvimento, log o erro mas não pare a aplicação
+                $log = STORAGE_PATH . DIRECTORY_SEPARATOR . 'php-error.log';
+                @file_put_contents($log, '[' . date('c') . "] DB CONNECT FATAL: " . $e->getMessage() . "\n", FILE_APPEND);
                 if (Config::app()['env'] === 'dev') {
-                    error_log('Database connection failed: ' . $e->getMessage());
-                    throw new \RuntimeException('MySQL não está rodando. Inicie o MySQL no XAMPP Control Panel.');
+                    throw new \RuntimeException('MySQL não está rodando ou credenciais inválidas.');
                 }
-                throw new \RuntimeException('Erro ao conectar ao banco de dados: ' . $e->getMessage());
+                throw new \RuntimeException('Erro ao conectar ao banco de dados.');
             }
         }
         
