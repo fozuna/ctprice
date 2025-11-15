@@ -24,9 +24,11 @@ class Router
     {
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
         $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
-        // Remove base prefix (ex.: /ctprice/public)
         if ($this->base !== '' && strncmp($uri, $this->base, strlen($this->base)) === 0) {
             $uri = substr($uri, strlen($this->base)) ?: '/';
+        }
+        if (strncmp($uri, '/public', 7) === 0) {
+            $uri = substr($uri, 7) ?: '/';
         }
         $path = $this->normalize($uri);
 

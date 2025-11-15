@@ -21,14 +21,12 @@ class Config
             $v = $_ENV[$k] ?? $_SERVER[$k] ?? getenv($k) ?? ($env[$k] ?? null);
             return ($v !== null && $v !== '') ? $v : $d;
         };
-        $isCliServer = (PHP_SAPI === 'cli-server');
         $host = $_SERVER['HTTP_HOST'] ?? '';
-        $reqPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
         $envBase = $get('APP_BASE_URL', null);
         if ($envBase !== null && $envBase !== '') {
             $base = rtrim($envBase, '/');
         } else {
-            if (stripos($host, 'localhost') !== false || $host === '127.0.0.1' || preg_match('#^/ctprice/public(?:/|$)#', $reqPath)) {
+            if (stripos($host, 'localhost') !== false || $host === '127.0.0.1') {
                 $base = '/ctprice/public';
             } else {
                 $base = '';

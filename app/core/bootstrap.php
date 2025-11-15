@@ -42,6 +42,12 @@ define('STORAGE_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'storage');
 @mkdir(STORAGE_PATH, 0775, true);
 ini_set('log_errors', '1');
 ini_set('error_log', STORAGE_PATH . DIRECTORY_SEPARATOR . 'php-error.log');
+$logFile = STORAGE_PATH . DIRECTORY_SEPARATOR . 'php-error.log';
+$ok = @file_put_contents($logFile, '[' . date('c') . "] BOOT START\n", FILE_APPEND);
+if ($ok === false) {
+    $tmpLog = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'ctprice-php-error.log';
+    @file_put_contents($tmpLog, '[' . date('c') . "] BOOT START (fallback)\n", FILE_APPEND);
+}
 
 // Garantir diretório de currículos
 if (!is_dir(STORAGE_PATH . DIRECTORY_SEPARATOR . 'resumes')) {

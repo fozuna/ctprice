@@ -1,5 +1,16 @@
 <?php
-require __DIR__ . '/../app/core/bootstrap.php';
+$log = dirname(__DIR__) . '/storage/php-error.log';
+$w = @file_put_contents($log, '[' . date('c') . "] ENTRY PUBLIC\n", FILE_APPEND);
+if ($w === false) {
+    @file_put_contents(sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'ctprice-php-error.log', '[' . date('c') . "] ENTRY PUBLIC (fallback)\n", FILE_APPEND);
+}
+try {
+    require __DIR__ . '/../app/core/bootstrap.php';
+} catch (\Throwable $e) {
+    @file_put_contents($log, '[' . date('c') . "] PUBLIC BOOTSTRAP FATAL: " . $e->getMessage() . "\n", FILE_APPEND);
+    http_response_code(500);
+    exit;
+}
 
 use App\Core\Router;
 use App\Core\Config;
@@ -57,4 +68,9 @@ $router->post('/admin/beneficios/excluir/{id}', [AdminBeneficiosController::clas
 $router->get('/admin/usuarios/novo', [AdminUsuariosController::class, 'create']);
 $router->post('/admin/usuarios/novo', [AdminUsuariosController::class, 'store']);
 
-$router->dispatch();
+try {
+    $router->dispatch();
+} catch (\Throwable $e) {
+    @file_put_contents($log, '[' . date('c') . "] DISPATCH FATAL: " . $e->getMessage() . "\n", FILE_APPEND);
+    http_response_code(500);
+}
