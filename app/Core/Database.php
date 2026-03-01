@@ -12,11 +12,12 @@ class Database
 
     private function __construct()
     {
-        $host = $_ENV['DB_HOST'] ?? '127.0.0.1';
-        $name = $_ENV['DB_NAME'] ?? 'ctprice_db';
-        $user = $_ENV['DB_USER'] ?? 'root';
-        $pass = $_ENV['DB_PASS'] ?? '';
-        $charset = $_ENV['DB_CHARSET'] ?? 'utf8mb4';
+        // Try $_ENV, then getenv(), then defaults
+        $host = $_ENV['DB_HOST'] ?? getenv('DB_HOST') ?: '127.0.0.1';
+        $name = $_ENV['DB_NAME'] ?? getenv('DB_NAME') ?: 'ctprice_db';
+        $user = $_ENV['DB_USER'] ?? getenv('DB_USER') ?: 'root';
+        $pass = $_ENV['DB_PASS'] ?? getenv('DB_PASS') ?: '';
+        $charset = $_ENV['DB_CHARSET'] ?? getenv('DB_CHARSET') ?: 'utf8mb4';
 
         try {
             $dsn = "mysql:host=$host;dbname=$name;charset=$charset";
