@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Serve arquivos existentes em public diretamente
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Encaminhar todas as outras requisições para o roteador
+RewriteRule ^ router.php [L]
+
+# Segurança básica em public (reforço)
+Options -Indexes

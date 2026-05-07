@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Teste Typography */
+  .content-area {
+    @apply prose prose-lg max-w-none;
+  }
+  
+  /* Teste Forms */
+  .custom-input {
+    @apply form-input rounded-md;
+  }
+  
+  .custom-select {
+    @apply form-select rounded-md;
+  }
+  
+  /* Teste básico sem aspect-ratio por enquanto */
+  .video-container {
+    @apply relative w-full;
+  }
+}

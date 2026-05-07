@@ -2,8 +2,10 @@ logs/
 .env
 vendor/
 node_modules/
+.vercel/
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
 *.log
+*.zip

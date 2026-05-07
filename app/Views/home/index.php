@@ -1,12 +1,12 @@
 <!-- Hero Section -->
-<section id="home" class="relative bg-primary-dark text-white overflow-hidden min-h-[80vh] flex items-center">
+<section id="home" class="ct-hero relative bg-primary-dark text-white overflow-hidden flex items-center">
     <!-- Background Overlay -->
     <div class="absolute inset-0 z-0">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Background" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
         <div class="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/90 to-transparent"></div>
     </div>
 
-    <div class="container mx-auto px-4 relative z-10 py-20">
+    <div class="ct-container ct-hero-inner relative z-10">
         <div class="max-w-3xl animate-fade-in-up">
             <span class="inline-block py-1 px-3 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6 border border-accent/20 backdrop-blur-sm">
                 Organização Contábil Premium
@@ -20,11 +20,11 @@
                 Atuamos nos ramos de contabilidade e planejamento tributário em formato digital, sem papel e sem burocracia.
                 Fornecemos informações precisas e seguras para suas melhores decisões.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#contact" class="px-8 py-4 bg-accent text-primary font-bold rounded hover:bg-accent-hover transition-all shadow-lg hover:shadow-accent/30 transform hover:-translate-y-1 text-center">
+            <div class="flex flex-col sm:flex-row gap-5">
+                <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-accent text-primary font-bold rounded hover:bg-accent-hover transition-all shadow-lg hover:shadow-accent/30 transform hover:-translate-y-1 text-center">
                     Fale com um Especialista
                 </a>
-                <a href="#services" class="px-8 py-4 bg-transparent border border-white/30 text-white font-semibold rounded hover:bg-white/10 transition-all backdrop-blur-sm text-center">
+                <a href="/ctprice/servicos" class="px-8 py-4 bg-transparent border border-white/30 text-white font-semibold rounded hover:bg-white/10 transition-all backdrop-blur-sm text-center">
                     Nossos Serviços
                 </a>
             </div>
@@ -36,7 +36,7 @@
 </section>
 
 <!-- Stats / Trust Indicators (Optional but good for premium feel) -->
-<div class="bg-white border-b border-gray-100 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-lg shadow-card p-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="bg-white border-b border-gray-100 relative z-20 -mt-10 mx-auto max-w-[1140px] rounded-lg shadow-card p-6 grid grid-cols-2 md:grid-cols-4 gap-5 ct-container" style="padding-left: 0; padding-right: 0;">
     <div class="text-center opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">
         <h3 class="text-3xl font-display font-bold text-primary mb-1">100%</h3>
         <p class="text-sm text-gray-500 uppercase tracking-wide">Digital</p>
@@ -56,9 +56,9 @@
 </div>
 
 <!-- About Section -->
-<section id="about" class="py-20 md:py-32 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
+<section id="about" class="ct-section bg-white">
+    <div class="ct-container">
+        <div class="grid md:grid-cols-2 gap-5 items-center">
             <div class="relative">
                 <div class="absolute -top-4 -left-4 w-24 h-24 bg-secondary/10 rounded-full blur-xl"></div>
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -67,7 +67,7 @@
                 </div>
                 <!-- Float Card -->
                 <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-xl shadow-card max-w-xs hidden md:block opacity-0 animate-fade-in-up" style="animation-delay: 0.8s;">
-                    <div class="flex items-center gap-4 mb-3">
+                    <div class="flex items-center gap-5 mb-3">
                         <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
                             <i class="fas fa-check"></i>
                         </div>
@@ -136,7 +136,7 @@
 </section>
 
 <!-- Services Section -->
-<section id="services" class="py-24 relative overflow-hidden bg-[#050911]">
+<section id="services" class="ct-section relative overflow-hidden bg-[#050911]">
     <!-- Background Elements (Geometric Pattern) -->
     <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +154,7 @@
     <div class="absolute inset-0 z-0 bg-gradient-to-r from-[#050911] via-transparent to-[#050911] pointer-events-none"></div>
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-[#10E36B] opacity-[0.02] blur-[120px] pointer-events-none rounded-full"></div>
 
-    <div class="container mx-auto px-4 relative z-10">
+    <div class="ct-container relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h4 class="text-[#10E36B] font-bold uppercase tracking-wider mb-3 text-sm">Nossos Serviços</h4>
             <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
@@ -165,7 +165,7 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <?php foreach ($services as $service): ?>
             <div class="bg-white rounded-2xl p-8 border border-white/5 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] flex flex-col h-full relative overflow-hidden">
                  <div class="w-16 h-16 rounded-xl bg-[#00222C] text-[#10E36B] flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-[#057038] transition-all duration-300 border border-[#10E36B]/20">
@@ -189,8 +189,8 @@
 </section>
 
 <!-- Testimonials Section -->
-<section id="testimonials" class="py-20 md:py-28 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-7xl">
+<section id="testimonials" class="ct-section bg-gray-50">
+    <div class="ct-container">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h4 class="text-secondary font-semibold uppercase tracking-wider mb-2">Depoimentos</h4>
             <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
@@ -255,7 +255,7 @@
         }, $testimonials) : $demoTestimonials;
         ?>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <?php foreach ($displayData as $testimonial): ?>
             <div class="bg-white p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] hover:shadow-2xl transition-all duration-300 flex flex-col h-full border border-gray-100 group testimonial-card">
                 <!-- Header: Avatar + Quote + Text -->
@@ -287,7 +287,7 @@
                             <span class="text-white/90 text-xs font-bold uppercase tracking-wider bg-[#10E36B]/90 px-2 py-1 rounded">CT Price</span>
                         </div>
                         
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-5">
                             <!-- Play Button -->
                             <div class="w-12 h-12 rounded-full border-2 border-white/80 flex items-center justify-center backdrop-blur-sm group-hover:bg-white group-hover:text-primary transition-all duration-300 shadow-lg group-hover:scale-110 pointer-events-auto">
                                 <i class="fas fa-play text-white ml-1 text-lg group-hover:text-primary transition-colors"></i>
@@ -311,7 +311,7 @@
                 </div>
 
                 <!-- Footer Icons -->
-                <div class="mt-6 flex justify-center gap-4">
+                <div class="mt-6 flex justify-center gap-5">
                     <a href="#" class="w-9 h-9 rounded-full bg-[#008751] text-white flex items-center justify-center hover:bg-[#00683e] transition-colors shadow-sm hover:shadow-md transform hover:-translate-y-1 duration-200" aria-label="Website">
                         <i class="fab fa-chrome text-sm"></i>
                     </a>
@@ -326,8 +326,8 @@
 </section>
 
 <!-- Partners / Clients Section -->
-<section id="clients" class="py-16 bg-white border-t border-gray-100">
-    <div class="container mx-auto px-4">
+<section id="clients" class="ct-section bg-white border-t border-gray-100">
+    <div class="ct-container">
         <div class="text-center mb-10">
             <h4 class="text-secondary font-semibold uppercase tracking-wider mb-2">Confiam em nós</h4>
             <h2 class="text-2xl md:text-3xl font-display font-bold text-gray-900">
@@ -335,7 +335,7 @@
             </h2>
         </div>
         
-        <div id="partners-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full">
+        <div id="partners-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 w-full">
             <?php 
             $initialIds = [];
             if (!empty($partners)): 
@@ -508,8 +508,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- Institutional Video Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
+<section class="ct-section bg-white">
+    <div class="ct-container">
         <div class="text-center max-w-4xl mx-auto mb-12">
             <h2 class="text-3xl md:text-4xl font-display font-bold text-[#00222C] mb-6">
                 Ética, agilidade, segurança nos processos e respeito ao cliente
@@ -539,16 +539,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 <!-- CTA / Contact Preview -->
-<section class="py-20 bg-primary-dark relative overflow-hidden">
+<section class="ct-section bg-primary-dark relative overflow-hidden">
     <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-    <div class="container mx-auto px-4 relative z-10 text-center">
+    <div class="ct-container relative z-10 text-center">
         <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-6">
             Pronto para otimizar sua gestão contábil?
         </h2>
         <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
             Entre em contato conosco hoje mesmo e descubra como podemos ajudar sua empresa a crescer com segurança e eficiência.
         </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <div class="flex flex-col sm:flex-row justify-center gap-5">
             <a href="https://wa.me/5567992616117" target="_blank" class="px-8 py-4 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition-all shadow-lg flex items-center justify-center">
                 <i class="fab fa-whatsapp mr-2 text-xl"></i> Falar no WhatsApp
             </a>

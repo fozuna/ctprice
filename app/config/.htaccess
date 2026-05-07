@@ -1,0 +1,18 @@
+# Proteger arquivos de configuração
+<Files "*.php">
+    <RequireAll>
+        Require all denied
+    </RequireAll>
+</Files>
+
+<Files "config.php">
+    <RequireAll>
+        Require all denied
+    </RequireAll>
+</Files>
+
+<Files "*.lock">
+    <RequireAll>
+        Require all denied
+    </RequireAll>
+</Files>

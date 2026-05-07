@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Entrevista Prompt Visibility Test</title>
+</head>
+<body>
+<pre id="log"></pre>
+<script>
+  function needsInterview(stage){
+    return stage === 'ENTREVISTA';
+  }
+  const stages = ['RECEBIDO','IA','RH','ENTREVISTA','DISPENSADO','TALENTOS','CONTRATADO'];
+  const out = [];
+  stages.forEach(s => {
+    out.push(s + ': ' + (needsInterview(s) ? 'prompt' : 'no-prompt'));
+  });
+  document.getElementById('log').textContent = out.join('\n');
+  // assertions
+  const expectPrompt = needsInterview('ENTREVISTA') === true;
+  const expectNoPrompt = ['RECEBIDO','IA','RH','DISPENSADO','TALENTOS','CONTRATADO'].every(s => needsInterview(s) === false);
+  if (!expectPrompt || !expectNoPrompt) {
+    document.body.style.background = 'salmon';
+    document.getElementById('log').textContent += '\nFAIL';
+  } else {
+    document.body.style.background = '#e6ffed';
+    document.getElementById('log').textContent += '\nOK';
+  }
+</script>
+</body>
+</html>

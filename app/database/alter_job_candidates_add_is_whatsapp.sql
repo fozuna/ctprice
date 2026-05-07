@@ -1,0 +1,1 @@
+ALTER TABLE job_candidates ADD COLUMN is_whatsapp TINYINT(1) NOT NULL DEFAULT 0;

@@ -1,0 +1,23 @@
+{
+  "name": "madeplant-controller",
+  "version": "1.0.0",
+  "description": "Sistema de Controle de Produção Madeplant",
+  "main": "index.php",
+  "scripts": {
+    "build-css": "tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/output.css --watch",
+    "build-css-prod": "tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/output.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "tailwindcss": "^3.4.0"
+  },
+  "keywords": [
+    "php",
+    "tailwindcss",
+    "production-control"
+  ],
+  "author": "Madeplant",
+  "license": "MIT"
+}

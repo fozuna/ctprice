@@ -1,0 +1,52 @@
+# Arquivos de configuração sensíveis
+config/config.php
+config/config.production.php
+config/config.staging.php
+config/config.local.php
+config/*.local.php
+config/installed.lock
+config/version.json
+
+# Variáveis de ambiente
+.env
+
+# Logs
+logs/*.log
+logs/*.txt
+!logs/.gitkeep
+
+# Uploads (agora em public)
+public/uploads/*
+!public/uploads/.gitkeep
+uploads/*
+!uploads/.gitkeep
+
+# Arquivos temporários
+temp/*
+!temp/.gitkeep
+
+# Node modules (se houver)
+node_modules/
+
+# Dependências PHP (se usar Composer)
+vendor/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos do IDE
+.vscode/
+.idea/
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+backup_*.sql
+*.sql
+!database/*.sql
+*.zip
+
+# Arquivos de cache
+*.cache

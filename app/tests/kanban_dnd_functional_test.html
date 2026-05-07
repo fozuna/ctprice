@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kanban DnD Functional Test</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; padding: 16px; }
+    .ok { color: #0a7; }
+    .fail { color: #c00; }
+    .col { width: 260px; padding: 8px; border: 1px solid #ccc; border-radius: 8px; margin-right: 12px; min-height: 40px; }
+    .wrap { display: flex; gap: 12px; }
+    .card { padding: 8px; border: 1px solid #999; border-radius: 8px; background: #fff; margin-bottom: 8px; }
+    .dragging { opacity: 0.5; }
+  </style>
+</head>
+<body>
+  <h1>Testes funcionais: Drag-and-drop Kanban</h1>
+  <div id="out"></div>
+
+  <div class="wrap">
+    <div id="colA" class="col" data-stage="RH"></div>
+    <div id="colB" class="col" data-stage="IA"></div>
+  </div>
+
+  <script>
+    const out = document.getElementById('out');
+    function logLine(ok, msg){
+      const div = document.createElement('div');
+      div.className = ok ? 'ok' : 'fail';
+      div.textContent = (ok ? '[OK] ' : '[FAIL] ') + msg;
+      out.appendChild(div);
+      if(!ok) throw new Error(msg);
+    }
+    function assertEq(a,b,msg){
+      const ok = JSON.stringify(a) === JSON.stringify(b);
+      logLine(ok, msg + ' | esperado=' + JSON.stringify(b) + ' atual=' + JSON.stringify(a));
+    }
+
+    function mkCard(id, label){
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.setAttribute('draggable','true');
+      el.dataset.id = String(id);
+      el.textContent = label + ' (#' + id + ')';
+      return el;
+    }
+
+    const colA = document.getElementById('colA');
+    const colB = document.getElementById('colB');
+    colA.appendChild(mkCard(1,'A'));
+    colA.appendChild(mkCard(2,'B'));
+    colA.appendChild(mkCard(3,'C'));
+    colA.appendChild(mkCard(4,'D'));
+    colB.appendChild(mkCard(5,'E'));
+
+    function setRects(container){
+      const cards = Array.from(container.querySelectorAll('[data-id]'));
+      cards.forEach((el, idx) => {
+        el.getBoundingClientRect = () => ({ top: idx*20, height: 20 });
+      });
+    }
+    setRects(colA); setRects(colB);
+
+    let kanbanDragId = null;
+    function kanbanSnapshotColumn(col){
+      return Array.from(col.querySelectorAll('[data-id]')).map(el => String(el.dataset.id));
+    }
+    function kanbanRestoreColumnOrder(col, ids){
+      const map = new Map();
+      Array.from(col.querySelectorAll('[data-id]')).forEach(el => map.set(String(el.dataset.id), el));
+      ids.forEach(id => { const el = map.get(String(id)); if (el) col.appendChild(el); });
+    }
+    function kanbanGetDragAfterElement(container, y){
+      const cards = Array.from(container.querySelectorAll('[data-id]'));
+      let closest = { offset: Number.NEGATIVE_INFINITY, element: null };
+      for (const child of cards) {
+        const box = child.getBoundingClientRect();
+        const offset = y - (box.top + box.height/2);
+        if (offset < 0 && offset > closest.offset) closest = { offset, element: child };
+      }
+      return closest.element;
+    }
+
+    const calls = [];
+    window.fetch = async (url, opts) => {
+      calls.push({ url, opts });
+      const fail = /fail=1/.test(url);
+      const ok = !fail;
+      return {
+        async text(){ return JSON.stringify(ok ? { ok: true } : { ok: false, message: 'erro' }); }
+      };
+    };
+    window.alert = () => {};
+    window.prompt = () => 'obs';
+
+    async function kanbanPersistOrder(stage, orderedIds, onError){
+      const r = await fetch('rh-kanban.php?action=reorder', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ stage, ordered_ids: orderedIds }) });
+      const text = await r.text();
+      let j; try { j = JSON.parse(text); } catch(e){ j = { ok:false }; }
+      if(!j.ok && typeof onError==='function') onError(j);
+    }
+    async function kanbanUpdateStage(id, stage, note, interview_dt, hire_dt, onError, interview_type, interview_link, extra){
+      const payload = Object.assign({ id, stage, note, interview_dt, hire_dt, interview_type: interview_type||'', interview_link: interview_link||'' }, extra||{});
+      const r = await fetch('rh-kanban.php?action=move', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      const text = await r.text();
+      let j; try { j = JSON.parse(text); } catch(e){ j = { ok:false }; }
+      if(!j.ok && typeof onError==='function') onError(j);
+    }
+
+    function kanbanDragStart(card){
+      kanbanDragId = String(card.dataset.id);
+      card.classList.add('dragging');
+    }
+    function kanbanDragEnd(card){
+      card.classList.remove('dragging');
+      kanbanDragId = null;
+    }
+
+    async function kanbanDrop(currentTarget, clientY){
+      const targetCol = currentTarget.closest('[data-stage]');
+      const newStage = targetCol?.dataset?.stage || null;
+      if(!kanbanDragId || !newStage) return;
+      const card = document.querySelector('[data-id="'+kanbanDragId+'"]');
+      const fromCol = card.parentElement;
+      const fromStage = fromCol.dataset.stage;
+      const fromOrderBefore = kanbanSnapshotColumn(fromCol);
+      const toOrderBefore = kanbanSnapshotColumn(targetCol);
+      if(fromStage === newStage){
+        const insertBefore = kanbanGetDragAfterElement(targetCol, clientY);
+        if(insertBefore) targetCol.insertBefore(card, insertBefore); else targetCol.appendChild(card);
+        const toOrder = kanbanSnapshotColumn(targetCol);
+        await kanbanPersistOrder(newStage, toOrder, () => kanbanRestoreColumnOrder(targetCol, toOrderBefore));
+        return;
+      }
+      const insertBefore = kanbanGetDragAfterElement(targetCol, clientY);
+      if(insertBefore) targetCol.insertBefore(card, insertBefore); else targetCol.appendChild(card);
+      const fromOrder = kanbanSnapshotColumn(fromCol);
+      const toOrder = kanbanSnapshotColumn(targetCol);
+      await kanbanUpdateStage(kanbanDragId, newStage, 'obs', '', '', () => {
+        kanbanRestoreColumnOrder(fromCol, fromOrderBefore);
+        kanbanRestoreColumnOrder(targetCol, toOrderBefore);
+      }, '', '', { from_stage: fromStage, from_order: fromOrder, to_order: toOrder });
+    }
+
+    (async function(){
+      assertEq(kanbanSnapshotColumn(colA), ['1','2','3','4'], 'Estado inicial coluna RH');
+
+      kanbanDragStart(colA.querySelector('[data-id="4"]'));
+      setRects(colA);
+      await kanbanDrop(colA, 0);
+      kanbanDragEnd(colA.querySelector('[data-id="4"]'));
+      assertEq(kanbanSnapshotColumn(colA), ['4','1','2','3'], 'Drop no início reordena dentro da coluna');
+      assertEq(calls[calls.length-1].url, 'rh-kanban.php?action=reorder', 'Reordenação dentro da etapa chama reorder');
+
+      kanbanDragStart(colA.querySelector('[data-id="1"]'));
+      setRects(colA);
+      await kanbanDrop(colA, 35);
+      kanbanDragEnd(colA.querySelector('[data-id="1"]'));
+      assertEq(kanbanSnapshotColumn(colA), ['4','2','1','3'], 'Drop no meio reordena dentro da coluna');
+
+      kanbanDragStart(colA.querySelector('[data-id="4"]'));
+      setRects(colA);
+      await kanbanDrop(colA, 999);
+      kanbanDragEnd(colA.querySelector('[data-id="4"]'));
+      assertEq(kanbanSnapshotColumn(colA), ['2','1','3','4'], 'Drop no fim reordena dentro da coluna');
+
+      kanbanDragStart(colA.querySelector('[data-id="2"]'));
+      setRects(colB);
+      await kanbanDrop(colB, 0);
+      kanbanDragEnd(document.querySelector('[data-id="2"]'));
+      assertEq(kanbanSnapshotColumn(colA), ['1','3','4'], 'Mover para outra etapa remove da origem');
+      assertEq(kanbanSnapshotColumn(colB), ['2','5'], 'Mover para outra etapa insere no destino');
+      assertEq(calls[calls.length-1].url, 'rh-kanban.php?action=move', 'Mover entre etapas chama move');
+
+      const prevA = kanbanSnapshotColumn(colA);
+      const prevB = kanbanSnapshotColumn(colB);
+      window.fetch = async (url, opts) => ({ async text(){ return JSON.stringify({ ok:false, message:'erro' }); } });
+      kanbanDragStart(colB.querySelector('[data-id="2"]'));
+      setRects(colA);
+      await kanbanDrop(colA, 0);
+      kanbanDragEnd(document.querySelector('[data-id="2"]'));
+      assertEq(kanbanSnapshotColumn(colA), prevA, 'Falha de rede/validação reverte origem');
+      assertEq(kanbanSnapshotColumn(colB), prevB, 'Falha de rede/validação reverte destino');
+
+      logLine(true, 'Suite finalizada');
+    })();
+  </script>
+</body>
+</html>
+

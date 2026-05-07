@@ -28,8 +28,18 @@ class Router
 
         // Handle base path if running in subdirectory
         // This is important for XAMPP htdocs/ctprice
-        $scriptName = $_SERVER['SCRIPT_NAME'];
-        $basePath = str_replace('/public_html/index.php', '', $scriptName);
+        if (defined('APP_URL')) {
+            $basePath = APP_URL;
+        } else {
+            $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+            $needle = '/public_html/index.php';
+            $pos = strpos($scriptName, $needle);
+            if ($pos !== false) {
+                $basePath = substr($scriptName, 0, $pos);
+            } else {
+                $basePath = str_replace('/index.php', '', $scriptName);
+            }
+        }
         
         // If URI starts with base path, strip it
         if (strpos($uri, $basePath) === 0) {

@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CT Price – Organização Contábil</title>
-    <meta name="description" content="Cuide da sua empresa, e deixe a contabilidade nas mãos de quem entende. Atuamos nos ramos de contabilidade e planejamento tributário em formato digital.">
+    <?php
+        $metaTitle = isset($metaTitle) && is_string($metaTitle) && $metaTitle !== '' ? $metaTitle : 'CT Price – Organização Contábil';
+        $metaDescription = isset($metaDescription) && is_string($metaDescription) && $metaDescription !== ''
+            ? $metaDescription
+            : 'Cuide da sua empresa, e deixe a contabilidade nas mãos de quem entende. Atuamos nos ramos de contabilidade e planejamento tributário em formato digital.';
+    ?>
+    <title><?php echo htmlspecialchars($metaTitle); ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars($metaDescription); ?>">
     
     <!-- Favicon -->
     <link rel="icon" href="public_html/assets/imagens/favicon.png" type="image/png">
@@ -22,6 +28,13 @@
     <script>
         tailwind.config = {
             theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '1024px',
+                    xl: '1280px',
+                    '2xl': '1440px',
+                },
                 extend: {
                     colors: {
                         // Official CT Price Palette
@@ -92,6 +105,138 @@
         }
         .animate-fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        body {
+            font-size: 16px;
+            line-height: 24px;
+        }
+        @media (min-width: 768px) {
+            body {
+                font-size: 18px;
+                line-height: 28px;
+            }
+        }
+
+        :root {
+            --ct-space-1: 4px;
+            --ct-space-2: 8px;
+            --ct-space-3: 12px;
+            --ct-space-4: 16px;
+            --ct-space-6: 24px;
+            --ct-space-8: 32px;
+            --ct-space-10: 40px;
+            --ct-space-12: 48px;
+            --ct-space-16: 64px;
+            --ct-motion-fast: 200ms;
+            --ct-motion-base: 250ms;
+        }
+
+        a,
+        button,
+        [role="button"] {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter;
+            transition-duration: var(--ct-motion-fast);
+            transition-timing-function: ease;
+        }
+
+        input,
+        textarea,
+        select {
+            transition-property: border-color, box-shadow, background-color, color;
+            transition-duration: var(--ct-motion-fast);
+            transition-timing-function: ease;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        [role="button"]:focus-visible {
+            outline: 2px solid rgba(16, 227, 107, 0.65);
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        .ct-hit {
+            min-width: 44px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        .ct-container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1140px;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        @media (min-width: 768px) {
+            .ct-container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .ct-container {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+        @media (max-width: 1024px) {
+            .ct-container {
+                max-width: 1024px;
+            }
+        }
+        @media (max-width: 767px) {
+            .ct-container {
+                max-width: 767px;
+            }
+        }
+
+        .ct-gap-20 {
+            gap: 20px;
+        }
+
+        .ct-widget {
+            margin-block-end: 20px;
+        }
+
+        .ct-section {
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+        @media (min-width: 768px) {
+            .ct-section {
+                padding-top: 48px;
+                padding-bottom: 48px;
+            }
+        }
+
+        .ct-hero {
+            min-height: 640px;
+        }
+
+        .ct-hero-inner {
+            padding: 50px;
+        }
+        @media (max-width: 767px) {
+            .ct-hero-inner {
+                padding: 30px;
+            }
         }
     </style>
 </head>

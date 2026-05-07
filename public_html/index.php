@@ -75,6 +75,14 @@ $router = new Router();
 
 // Define Routes
 $router->get('/', [\App\Controllers\HomeController::class, 'index']);
+$router->get('/sobre', [\App\Controllers\InstitutionalController::class, 'sobre']);
+$router->get('/servicos', [\App\Controllers\InstitutionalController::class, 'servicos']);
+$router->get('/clientes', [\App\Controllers\InstitutionalController::class, 'clientes']);
+$router->get('/parceiros', [\App\Controllers\InstitutionalController::class, 'parceiros']);
+$router->get('/depoimentos', [\App\Controllers\InstitutionalController::class, 'depoimentos']);
+$router->get('/noticias', [\App\Controllers\InstitutionalController::class, 'noticias']);
+$router->get('/fale-conosco', [\App\Controllers\InstitutionalController::class, 'faleConosco']);
+$router->post('/fale-conosco/enviar', [\App\Controllers\InstitutionalController::class, 'enviarFaleConosco']);
 $router->post('/partners/load-more', [\App\Controllers\HomeController::class, 'loadMorePartners']);
 
 // Dispatch

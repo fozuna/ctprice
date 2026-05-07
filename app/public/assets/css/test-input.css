@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Teste básico para verificar se os plugins estão funcionando */
+@layer components {
+  .test-typography {
+    @apply prose prose-lg;
+  }
+  
+  .test-form {
+    @apply form-input;
+  }
+  
+  .test-aspect {
+    @apply aspect-w-16 aspect-h-9;
+  }
+}

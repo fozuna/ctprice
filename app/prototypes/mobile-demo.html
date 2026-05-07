@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protótipo Mobile-First</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'rich-black': '#0d1321',
+            'prussian-blue': '#1d2d44',
+            'paynes-gray': '#3e5c76',
+            'silver-lake-blue': '#748cab'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-md mx-auto min-h-screen">
+    <header class="sticky top-0 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+      <button class="p-2 rounded hover:bg-gray-100 min-h-[44px] min-w-[44px]" aria-label="Abrir menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="text-xl font-semibold">Visão Mobile</h1>
+      <div class="w-[44px] h-[44px]"></div>
+    </header>
+    <main class="p-4 space-y-4">
+      <section aria-labelledby="cards" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-white rounded-lg border p-4 shadow-sm">
+          <h2 id="cards" class="text-lg font-medium mb-2">Ações rápidas</h2>
+          <div class="grid grid-cols-2 gap-2">
+            <button class="bg-paynes-gray text-white rounded-lg px-3 py-2 min-h-[44px]">Ocorrência</button>
+            <button class="bg-paynes-gray text-white rounded-lg px-3 py-2 min-h-[44px]">Mobilização</button>
+            <button class="bg-paynes-gray text-white rounded-lg px-3 py-2 min-h-[44px]">Produção</button>
+            <button class="bg-paynes-gray text-white rounded-lg px-3 py-2 min-h-[44px]">Relatórios</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg border p-4 shadow-sm">
+          <h2 class="text-lg font-medium mb-2">Lista de equipamentos</h2>
+          <ul class="divide-y">
+            <li class="py-3 flex items-center justify-between">
+              <div>
+                <p class="font-medium">PA-001</p>
+                <p class="text-sm text-gray-500">Frente A • Horas: 2350</p>
+              </div>
+              <button class="text-prussian-blue underline min-h-[44px]">Detalhes</button>
+            </li>
+            <li class="py-3 flex items-center justify-between">
+              <div>
+                <p class="font-medium">TR-015</p>
+                <p class="text-sm text-gray-500">Frente B • Horas: 1280</p>
+              </div>
+              <button class="text-prussian-blue underline min-h-[44px]">Detalhes</button>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="bg-white rounded-lg border p-4 shadow-sm">
+        <h2 class="text-lg font-medium mb-3">Formulário compacto</h2>
+        <form class="space-y-3">
+          <div>
+            <label class="block text-base font-medium mb-1">Frente</label>
+            <select class="w-full border rounded px-3 py-2 text-base">
+              <option>Frente A</option>
+              <option>Frente B</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-base font-medium mb-1">Quantidade</label>
+            <input type="number" class="w-full border rounded px-3 py-2 text-base" placeholder="0,00">
+          </div>
+          <button class="bg-prussian-blue text-white rounded-lg w-full px-4 py-2 min-h-[44px]">Salvar</button>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

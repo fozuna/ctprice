@@ -1,0 +1,36 @@
+USE appmadeplant;
+
+CREATE TABLE IF NOT EXISTS job_vacancies (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    requirements TEXT NOT NULL,
+    salary DECIMAL(12,2) NULL,
+    benefits TEXT NULL,
+    location VARCHAR(150) NOT NULL,
+    contract_type ENUM('CLT','PJ','INTEGRAL','MEIO_PERIODO') NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    status ENUM('ATIVA','INATIVA') NOT NULL DEFAULT 'ATIVA',
+    valid_until DATE NOT NULL,
+    created_by INT NOT NULL,
+    updated_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (created_by) REFERENCES users(id),
+    FOREIGN KEY (updated_by) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS job_candidates (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    vacancy_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    phone VARCHAR(50) NULL,
+    resume_url VARCHAR(255) NULL,
+    notes TEXT NULL,
+    status ENUM('NOVO','EM_ANALISE','APROVADO','REPROVADO') NOT NULL DEFAULT 'NOVO',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (vacancy_id) REFERENCES job_vacancies(id) ON DELETE CASCADE
+);
+

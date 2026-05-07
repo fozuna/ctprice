@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Kanban Badge Test</title>
+  <style>
+    .col { border: 1px solid #ccc; width: 200px; padding: 8px; display: inline-block; vertical-align: top; margin-right: 8px; }
+    .card { border: 1px solid #999; padding: 4px; margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <div class="col">
+    <div>RECEBIDO <span data-counter="RECEBIDO">1</span></div>
+    <div data-stage="RECEBIDO" id="colA">
+      <div class="card" data-id="1">Candidato A</div>
+    </div>
+  </div>
+  <div class="col">
+    <div>IA <span data-counter="IA">0</span></div>
+    <div data-stage="IA" id="colB"></div>
+  </div>
+  <script>
+    // Funções copiadas do kanban (reduzidas)
+    function el(stage){ return document.querySelector('[data-counter=\"'+stage+'\"]'); }
+    function read(stage){ return parseInt((el(stage).textContent||'0').trim(),10)||0; }
+    function setc(stage,v){ el(stage).textContent = String(Math.max(0,v)); }
+    function adjust(from,to,dir){ setc(from, read(from)-dir); setc(to, read(to)+dir); }
+
+    // Simula movimentação bem-sucedida
+    (function okMove(){
+      const card = document.querySelector('[data-id=\"1\"]');
+      const from = card.parentElement, to = document.getElementById('colB');
+      from.appendChild(document.createComment('placeholder'));
+      to.appendChild(card);
+      adjust('RECEBIDO','IA',+1);
+      console.assert(read('RECEBIDO')===0 && read('IA')===1, 'Contadores não conferem após OK');
+    })();
+
+    // Simula erro e reversão
+    (function errMove(){
+      const card = document.querySelector('[data-id=\"1\"]');
+      const to = document.getElementById('colA');
+      const from = document.getElementById('colB');
+      // move para IA->RECEBIDO, depois reverte
+      to.appendChild(card);
+      adjust('IA','RECEBIDO',+1);
+      // erro => reverte
+      from.appendChild(card);
+      adjust('RECEBIDO','IA',+1*-1); // desfaz
+      console.assert(read('RECEBIDO')===0 && read('IA')===1, 'Reversão incorreta');
+    })();
+    document.body.appendChild(document.createTextNode('ok'));
+  </script>
+</body>
+</html>
