@@ -11,23 +11,23 @@ $oldCompany = htmlspecialchars((string)($old['company'] ?? ''), ENT_QUOTES, 'UTF
 $oldMessage = htmlspecialchars((string)($old['message'] ?? ''), ENT_QUOTES, 'UTF-8');
 ?>
 
-<section class="ct-hero relative bg-primary-dark text-white overflow-hidden flex items-center">
+<section class="ct-hero ct-hero--internal relative bg-primary-dark text-white overflow-hidden flex items-center">
     <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2070&q=80" alt="Contato" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/90 to-transparent"></div>
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2070&q=80" alt="Contato" class="ct-hero-media w-full h-full object-cover mix-blend-overlay">
+        <div class="ct-hero-overlay absolute inset-0"></div>
     </div>
 
     <div class="ct-container ct-hero-inner relative z-10">
-        <div class="max-w-3xl animate-fade-in-up">
-            <span class="inline-block py-1 px-3 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6 border border-accent/20 backdrop-blur-sm">Fale Conosco</span>
-            <h1 class="text-4xl md:text-6xl font-display font-bold leading-tight mb-6">Tire suas dúvidas ou envie sugestões</h1>
-            <p class="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
+        <div class="max-w-2xl animate-fade-in-up">
+            <span class="inline-flex items-center py-1 px-3 rounded-full bg-white/10 text-accent text-xs md:text-sm font-semibold mb-4 border border-white/15 backdrop-blur-sm">Fale Conosco</span>
+            <h1 class="text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">Tire suas dúvidas ou envie sugestões</h1>
+            <p class="text-base md:text-lg text-white/88 leading-relaxed max-w-xl">
                 Atendimento ágil e próximo para apoiar sua empresa com segurança, organização e clareza.
             </p>
         </div>
     </div>
 
-    <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-t from-primary-dark to-transparent z-10"></div>
+    <div class="ct-hero-fade absolute bottom-0 right-0 w-1/3 h-1/3 z-10"></div>
 </section>
 
 <section class="w-full bg-white border-t border-gray-100">

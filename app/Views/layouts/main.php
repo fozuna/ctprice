@@ -238,6 +238,27 @@
                 padding: 30px;
             }
         }
+
+        .ct-hero--internal {
+            min-height: clamp(280px, 34vw, 340px);
+        }
+
+        .ct-hero--internal .ct-hero-inner {
+            padding-top: clamp(80px, 10vw, 112px);
+            padding-bottom: clamp(40px, 6vw, 56px);
+        }
+
+        .ct-hero--internal .ct-hero-media {
+            opacity: 0.14;
+        }
+
+        .ct-hero--internal .ct-hero-overlay {
+            background: linear-gradient(90deg, rgba(9, 41, 50, 0.94) 0%, rgba(15, 67, 79, 0.85) 52%, rgba(22, 114, 92, 0.5) 100%);
+        }
+
+        .ct-hero--internal .ct-hero-fade {
+            background: linear-gradient(to top, rgba(9, 41, 50, 0.36), transparent);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">

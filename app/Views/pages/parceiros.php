@@ -1,34 +1,34 @@
 <?php $baseUrl = defined('APP_URL') ? APP_URL : ''; ?>
 
-<section class="ct-hero relative bg-primary-dark text-white overflow-hidden flex items-center">
+<section class="ct-hero ct-hero--internal relative bg-primary-dark text-white overflow-hidden flex items-center">
     <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=2070&q=80" alt="Parcerias" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/90 to-transparent"></div>
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=2070&q=80" alt="Parcerias" class="ct-hero-media w-full h-full object-cover mix-blend-overlay">
+        <div class="ct-hero-overlay absolute inset-0"></div>
     </div>
 
     <div class="ct-container ct-hero-inner relative z-10">
-        <div class="max-w-3xl animate-fade-in-up">
-            <span class="inline-block py-1 px-3 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6 border border-accent/20 backdrop-blur-sm">
+        <div class="max-w-2xl animate-fade-in-up">
+            <span class="inline-flex items-center py-1 px-3 rounded-full bg-white/10 text-accent text-xs md:text-sm font-semibold mb-4 border border-white/15 backdrop-blur-sm">
                 Parceiros
             </span>
-            <h1 class="text-4xl md:text-6xl font-display font-bold leading-tight mb-6">
+            <h1 class="text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">
                 Parcerias de sucesso
             </h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
+            <p class="text-base md:text-lg text-white/88 mb-6 leading-relaxed max-w-xl">
                 São ainda maiores quando compartilhadas com quem caminha ao nosso lado.
             </p>
-            <div class="flex flex-col sm:flex-row gap-5">
-                <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-accent text-primary font-bold rounded hover:bg-accent-hover transition-all shadow-lg hover:shadow-accent/30 transform hover:-translate-y-1 text-center">
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-accent text-primary font-bold text-sm md:text-base rounded hover:bg-accent-hover transition-all shadow-lg hover:shadow-accent/30 transform hover:-translate-y-1 text-center">
                     Fale Conosco
                 </a>
-                <a href="<?= htmlspecialchars(($baseUrl !== '' ? $baseUrl : '') . '/servicos'); ?>" class="px-8 py-4 bg-transparent border border-white/30 text-white font-semibold rounded hover:bg-white/10 transition-all backdrop-blur-sm text-center">
+                <a href="<?= htmlspecialchars(($baseUrl !== '' ? $baseUrl : '') . '/servicos'); ?>" class="px-6 py-3 bg-transparent border border-white/30 text-white font-semibold text-sm md:text-base rounded hover:bg-white/10 transition-all backdrop-blur-sm text-center">
                     Conheça os Serviços
                 </a>
             </div>
         </div>
     </div>
 
-    <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-t from-primary-dark to-transparent z-10"></div>
+    <div class="ct-hero-fade absolute bottom-0 right-0 w-1/3 h-1/3 z-10"></div>
 </section>
 
 <section class="ct-section bg-white border-t border-gray-100">
