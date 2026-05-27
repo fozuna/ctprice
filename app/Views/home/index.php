@@ -11,12 +11,12 @@
             <span class="inline-block py-1 px-3 rounded-full bg-white/10 text-green-200 text-sm font-semibold mb-6 border border-white/15 backdrop-blur-sm">
                 Organização Contábil Premium
             </span>
-            <h1 class="text-4xl md:text-6xl font-display font-bold leading-tight mb-6">
+            <h1 class="ct-hero-home-title text-4xl md:text-6xl font-display font-bold mb-5 md:mb-6">
                 Cuide da sua empresa,<br>
                 <span class="text-green-200">deixe a contabilidade</span><br>
                 nas mãos de quem entende.
             </h1>
-            <p class="text-lg md:text-xl text-white/85 mb-8 leading-relaxed max-w-2xl">
+            <p class="ct-hero-home-copy text-lg md:text-xl text-white/85 mb-7 md:mb-8 max-w-2xl">
                 Atuamos nos ramos de contabilidade e planejamento tributário em formato digital, sem papel e sem burocracia.
                 Fornecemos informações precisas e seguras para suas melhores decisões.
             </p>

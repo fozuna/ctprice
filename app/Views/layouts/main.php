@@ -18,7 +18,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -67,8 +67,8 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        display: ['"Outfit"', 'sans-serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                        display: ['"Montserrat"', 'sans-serif'],
                     },
                     boxShadow: {
                         'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
@@ -83,12 +83,18 @@
     <style>
         /* Custom Styles that Tailwind might miss or for specific overrides */
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+        }
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
         }
         .hero-gradient {
             background: linear-gradient(135deg, #001116 0%, #00222C 100%);
@@ -275,14 +281,30 @@
 
         .ct-hero--internal .ct-hero-title {
             color: #ffffff;
+            font-size: clamp(1.9rem, 3.8vw, 3.1rem);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
         }
 
         .ct-hero--internal .ct-hero-copy {
             color: rgba(255, 255, 255, 0.84);
+            font-size: clamp(0.98rem, 1.55vw, 1.1rem);
+            line-height: 1.72;
         }
 
         .ct-hero--internal .ct-hero-accent {
             color: #7ff0b3;
+        }
+
+        .ct-hero-home-title {
+            font-size: clamp(2.2rem, 5.2vw, 4.5rem);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+        }
+
+        .ct-hero-home-copy {
+            font-size: clamp(1rem, 1.9vw, 1.2rem);
+            line-height: 1.72;
         }
 
         .ct-hero--internal .ct-hero-secondary-link {
