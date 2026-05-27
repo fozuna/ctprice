@@ -6,32 +6,21 @@
 
     <div class="ct-container ct-hero-inner relative z-10">
         <div class="max-w-2xl animate-fade-in-up">
-            <span class="inline-flex items-center py-1 px-3 rounded-full bg-white/10 text-accent text-xs md:text-sm font-semibold mb-4 border border-white/15 backdrop-blur-sm">
-                Nossos Serviços
-            </span>
-            <h1 class="text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">
+            <h1 class="ct-hero-title text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">
                 Soluções completas<br>
-                <span class="text-accent">para decisões seguras</span>
+                <span class="ct-hero-accent">para decisões seguras</span>
             </h1>
-            <p class="text-base md:text-lg text-white/88 mb-6 leading-relaxed max-w-xl">
+            <p class="ct-hero-copy text-base md:text-lg leading-relaxed max-w-xl">
                 Deixe a contabilidade nas mãos de quem entende: tecnologia, precisão e atendimento premium.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-accent text-primary font-bold text-sm md:text-base rounded hover:bg-accent-hover transition-all shadow-lg hover:shadow-accent/30 transform hover:-translate-y-1 text-center">
-                    Fale com um Especialista
-                </a>
-                <a href="/ctprice/sobre" class="px-6 py-3 bg-transparent border border-white/30 text-white font-semibold text-sm md:text-base rounded hover:bg-white/10 transition-all backdrop-blur-sm text-center">
-                    Conheça a CT Price
-                </a>
-            </div>
         </div>
     </div>
 
     <div class="ct-hero-fade absolute bottom-0 right-0 w-1/3 h-1/3 z-10"></div>
 </section>
 
-<section class="ct-section relative overflow-hidden bg-[#050911]">
-    <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+<section class="ct-section ct-section-surface relative overflow-hidden">
+    <div class="ct-surface-pattern absolute inset-0 z-0 pointer-events-none">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <pattern id="hexagons-services" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(1.5)">
@@ -42,25 +31,25 @@
         </svg>
     </div>
 
-    <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#050911] via-transparent to-[#050911] pointer-events-none"></div>
-    <div class="absolute inset-0 z-0 bg-gradient-to-r from-[#050911] via-transparent to-[#050911] pointer-events-none"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-[#10E36B] opacity-[0.02] blur-[120px] pointer-events-none rounded-full"></div>
+    <div class="ct-surface-overlay-y absolute inset-0 z-0 pointer-events-none"></div>
+    <div class="ct-surface-overlay-x absolute inset-0 z-0 pointer-events-none"></div>
+    <div class="ct-surface-glow absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-[#10E36B] blur-[120px] pointer-events-none rounded-full"></div>
 
     <div class="ct-container relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h4 class="text-[#10E36B] font-bold uppercase tracking-wider mb-3 text-sm">Serviços</h4>
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+            <h2 class="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-6 leading-tight">
                 Deixe a contabilidade nas mãos<br>de quem entende
             </h2>
-            <p class="text-gray-400 text-lg font-light max-w-2xl mx-auto">
+            <p class="text-gray-600 text-lg font-light max-w-2xl mx-auto">
                 Soluções completas e inteligentes para a gestão financeira e tributária do seu negócio.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <?php foreach ($services as $service): ?>
-                <div class="bg-white rounded-2xl p-8 border border-white/5 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] flex flex-col h-full relative overflow-hidden">
-                    <div class="w-16 h-16 rounded-xl bg-[#00222C] text-[#10E36B] flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-[#057038] transition-all duration-300 border border-[#10E36B]/20">
+                <div class="bg-white rounded-2xl p-8 border border-emerald-100/80 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_20px_45px_-24px_rgba(0,34,44,0.35)] flex flex-col h-full relative overflow-hidden">
+                    <div class="w-16 h-16 rounded-xl bg-emerald-50 text-secondary flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-300 border border-emerald-100">
                         <i class="<?php echo htmlspecialchars($service['icon_class'] ?? 'fas fa-check'); ?>"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#10E36B] transition-colors">
@@ -84,20 +73,20 @@
     </div>
 </section>
 
-<section class="ct-section bg-primary-dark relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+<section class="ct-section ct-cta-surface relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
     <div class="ct-container relative z-10 text-center">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+        <h2 class="ct-cta-title text-3xl md:text-4xl font-display font-bold mb-6">
             Pronto para começar?
         </h2>
-        <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+        <p class="ct-cta-copy text-lg mb-8 max-w-2xl mx-auto">
             Fale com um especialista e descubra a melhor estratégia para sua empresa.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-5">
             <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition-all shadow-lg flex items-center justify-center">
                 <i class="fab fa-whatsapp mr-2 text-xl"></i> Falar no WhatsApp
             </a>
-            <a href="mailto:contato@ctpricems.com.br" class="px-8 py-4 bg-white text-primary-dark font-semibold rounded hover:bg-gray-100 transition-all shadow-lg flex items-center justify-center">
+            <a href="mailto:contato@ctpricems.com.br" class="ct-cta-email px-8 py-4 font-semibold rounded transition-all shadow-lg flex items-center justify-center">
                 <i class="fas fa-envelope mr-2"></i> Enviar E-mail
             </a>
         </div>

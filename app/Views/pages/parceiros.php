@@ -8,23 +8,12 @@
 
     <div class="ct-container ct-hero-inner relative z-10">
         <div class="max-w-2xl animate-fade-in-up">
-            <span class="inline-flex items-center py-1 px-3 rounded-full bg-white/10 text-accent text-xs md:text-sm font-semibold mb-4 border border-white/15 backdrop-blur-sm">
-                Parceiros
-            </span>
-            <h1 class="text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">
+            <h1 class="ct-hero-title text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">
                 Parcerias de sucesso
             </h1>
-            <p class="text-base md:text-lg text-white/88 mb-6 leading-relaxed max-w-xl">
+            <p class="ct-hero-copy text-base md:text-lg leading-relaxed max-w-xl">
                 São ainda maiores quando compartilhadas com quem caminha ao nosso lado.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-accent text-primary font-bold text-sm md:text-base rounded hover:bg-accent-hover transition-all shadow-lg hover:shadow-accent/30 transform hover:-translate-y-1 text-center">
-                    Fale Conosco
-                </a>
-                <a href="<?= htmlspecialchars(($baseUrl !== '' ? $baseUrl : '') . '/servicos'); ?>" class="px-6 py-3 bg-transparent border border-white/30 text-white font-semibold text-sm md:text-base rounded hover:bg-white/10 transition-all backdrop-blur-sm text-center">
-                    Conheça os Serviços
-                </a>
-            </div>
         </div>
     </div>
 

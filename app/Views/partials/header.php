@@ -75,8 +75,8 @@ $isFaleConosco = $reqPath === '/fale-conosco';
                 <a href="<?= htmlspecialchars($hrefDepoimentos) ?>" class="text-sm font-medium py-2 <?= $isDepoimentos ? 'text-secondary font-semibold' : 'text-gray-700' ?> hover:text-secondary transition-colors" <?= $isDepoimentos ? 'aria-current="page"' : '' ?>>Depoimentos</a>
                 <a href="<?= htmlspecialchars($hrefNoticias) ?>" class="text-sm font-medium py-2 <?= $isNoticias ? 'text-secondary font-semibold' : 'text-gray-700' ?> hover:text-secondary transition-colors" <?= $isNoticias ? 'aria-current="page"' : '' ?>>Notícias</a>
                 <a href="<?= htmlspecialchars($hrefFaleConosco) ?>" class="text-sm font-medium py-2 <?= $isFaleConosco ? 'text-secondary font-semibold' : 'text-gray-700' ?> hover:text-secondary transition-colors" <?= $isFaleConosco ? 'aria-current="page"' : '' ?>>Fale Conosco</a>
-                <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="min-h-[44px] px-5 py-2.5 bg-secondary text-white text-sm font-medium rounded hover:bg-secondary-light transition-all shadow-lg hover:shadow-secondary/30 transform hover:-translate-y-0.5">
-                    Fale Conosco
+                <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp" title="Conversar no WhatsApp" class="ct-hit w-11 h-11 bg-secondary text-white rounded-full hover:bg-secondary-light transition-all shadow-lg hover:shadow-secondary/30 transform hover:-translate-y-0.5">
+                    <i class="fab fa-whatsapp text-lg" aria-hidden="true"></i>
                 </a>
             </nav>
 
@@ -98,7 +98,9 @@ $isFaleConosco = $reqPath === '/fale-conosco';
             <a href="<?= htmlspecialchars($hrefDepoimentos) ?>" class="flex items-center min-h-[44px] px-3 py-2 text-base font-medium <?= $isDepoimentos ? 'text-secondary bg-gray-50' : 'text-gray-700' ?> hover:text-secondary hover:bg-gray-50 rounded-md" <?= $isDepoimentos ? 'aria-current="page"' : '' ?>>Depoimentos</a>
             <a href="<?= htmlspecialchars($hrefNoticias) ?>" class="flex items-center min-h-[44px] px-3 py-2 text-base font-medium <?= $isNoticias ? 'text-secondary bg-gray-50' : 'text-gray-700' ?> hover:text-secondary hover:bg-gray-50 rounded-md" <?= $isNoticias ? 'aria-current="page"' : '' ?>>Notícias</a>
             <a href="<?= htmlspecialchars($hrefFaleConosco) ?>" class="flex items-center min-h-[44px] px-3 py-2 text-base font-medium <?= $isFaleConosco ? 'text-secondary bg-gray-50' : 'text-gray-700' ?> hover:text-secondary hover:bg-gray-50 rounded-md" <?= $isFaleConosco ? 'aria-current="page"' : '' ?>>Fale Conosco</a>
-            <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="flex items-center min-h-[44px] px-3 py-2 text-base font-medium text-secondary font-bold hover:bg-gray-50 rounded-md">Fale Conosco</a>
+            <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="flex items-center min-h-[44px] px-3 py-2 text-base font-medium text-secondary hover:bg-gray-50 rounded-md">
+                <i class="fab fa-whatsapp mr-3 text-lg" aria-hidden="true"></i> WhatsApp
+            </a>
             <div class="border-t border-gray-100 mt-2 pt-2">
                 <a href="#" class="flex items-center min-h-[44px] px-3 py-2 text-sm text-gray-500 hover:text-secondary">Trabalhe Conosco</a>
                 <a href="#" class="flex items-center min-h-[44px] px-3 py-2 text-sm text-gray-500 hover:text-secondary">Ouvidoria</a>

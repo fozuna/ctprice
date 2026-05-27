@@ -19,9 +19,8 @@ $oldMessage = htmlspecialchars((string)($old['message'] ?? ''), ENT_QUOTES, 'UTF
 
     <div class="ct-container ct-hero-inner relative z-10">
         <div class="max-w-2xl animate-fade-in-up">
-            <span class="inline-flex items-center py-1 px-3 rounded-full bg-white/10 text-accent text-xs md:text-sm font-semibold mb-4 border border-white/15 backdrop-blur-sm">Fale Conosco</span>
-            <h1 class="text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">Tire suas dúvidas ou envie sugestões</h1>
-            <p class="text-base md:text-lg text-white/88 leading-relaxed max-w-xl">
+            <h1 class="ct-hero-title text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">Tire suas dúvidas ou envie sugestões</h1>
+            <p class="ct-hero-copy text-base md:text-lg leading-relaxed max-w-xl">
                 Atendimento ágil e próximo para apoiar sua empresa com segurança, organização e clareza.
             </p>
         </div>

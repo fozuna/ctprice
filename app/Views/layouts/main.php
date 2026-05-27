@@ -239,8 +239,11 @@
             }
         }
 
-        .ct-hero--internal {
+        .ct-hero.ct-hero--internal {
             min-height: clamp(280px, 34vw, 340px);
+            background: linear-gradient(135deg, #072b2d 0%, #0b3f3a 48%, #106148 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: #ffffff;
         }
 
         .ct-hero--internal .ct-hero-inner {
@@ -249,15 +252,111 @@
         }
 
         .ct-hero--internal .ct-hero-media {
-            opacity: 0.14;
+            opacity: 0.22;
+            filter: saturate(0.92) brightness(0.78);
         }
 
         .ct-hero--internal .ct-hero-overlay {
-            background: linear-gradient(90deg, rgba(9, 41, 50, 0.94) 0%, rgba(15, 67, 79, 0.85) 52%, rgba(22, 114, 92, 0.5) 100%);
+            background:
+                radial-gradient(circle at top right, rgba(97, 224, 157, 0.22) 0%, rgba(97, 224, 157, 0) 36%),
+                linear-gradient(90deg, rgba(7, 43, 45, 0.94) 0%, rgba(11, 63, 58, 0.88) 52%, rgba(16, 97, 72, 0.72) 100%);
         }
 
         .ct-hero--internal .ct-hero-fade {
-            background: linear-gradient(to top, rgba(9, 41, 50, 0.36), transparent);
+            background: linear-gradient(to top, rgba(4, 24, 27, 0.34), transparent);
+        }
+
+        .ct-hero--internal .ct-hero-eyebrow {
+            background: rgba(255, 255, 255, 0.1);
+            color: #c8f8dc;
+            border-color: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(6px);
+        }
+
+        .ct-hero--internal .ct-hero-title {
+            color: #ffffff;
+        }
+
+        .ct-hero--internal .ct-hero-copy {
+            color: rgba(255, 255, 255, 0.84);
+        }
+
+        .ct-hero--internal .ct-hero-accent {
+            color: #7ff0b3;
+        }
+
+        .ct-hero--internal .ct-hero-secondary-link {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.22);
+            box-shadow: 0 8px 24px -20px rgba(4, 24, 27, 0.45);
+        }
+
+        .ct-hero--internal .ct-hero-secondary-link:hover {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.28);
+        }
+
+        .ct-section-surface {
+            background: #fefefe;
+        }
+
+        .ct-section-surface .ct-surface-pattern {
+            opacity: 0.45;
+        }
+
+        .ct-section-surface .ct-surface-pattern path {
+            stroke: #d7e7de;
+        }
+
+        .ct-section-surface .ct-surface-overlay-y {
+            background: linear-gradient(to bottom, rgba(5, 112, 56, 0.04), transparent 18%, transparent 82%, rgba(5, 112, 56, 0.04));
+        }
+
+        .ct-section-surface .ct-surface-overlay-x {
+            background: linear-gradient(to right, rgba(5, 112, 56, 0.04), transparent 18%, transparent 82%, rgba(5, 112, 56, 0.04));
+        }
+
+        .ct-section-surface .ct-surface-glow {
+            opacity: 0.06;
+        }
+
+        .ct-cta-surface {
+            background: linear-gradient(180deg, #fefefe 0%, #f5faf7 100%);
+            border-top: 1px solid #e4efe8;
+        }
+
+        .ct-cta-surface .ct-cta-title {
+            color: #0f2d34;
+        }
+
+        .ct-cta-surface .ct-cta-copy {
+            color: #556371;
+        }
+
+        .ct-cta-surface .ct-cta-email {
+            background: #ffffff;
+            color: #0f2d34;
+            border: 1px solid #dce8df;
+        }
+
+        .ct-cta-surface .ct-cta-email:hover {
+            background: #f4f8f5;
+        }
+
+        .ct-hero-home-media {
+            opacity: 0.22;
+            filter: saturate(0.92) brightness(0.96);
+        }
+
+        .ct-hero-home-overlay {
+            background:
+                radial-gradient(circle at top right, rgba(187, 247, 208, 0.24) 0%, rgba(187, 247, 208, 0) 34%),
+                linear-gradient(90deg, rgba(8, 59, 51, 0.78) 0%, rgba(12, 97, 77, 0.66) 48%, rgba(45, 177, 122, 0.24) 100%);
+        }
+
+        .ct-hero-home-fade {
+            background: linear-gradient(to top, rgba(8, 59, 51, 0.3), transparent);
         }
     </style>
 </head>

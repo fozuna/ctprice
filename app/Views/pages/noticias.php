@@ -6,23 +6,12 @@
 
     <div class="ct-container ct-hero-inner relative z-10">
         <div class="max-w-2xl animate-fade-in-up">
-            <span class="inline-flex items-center py-1 px-3 rounded-full bg-white/10 text-accent text-xs md:text-sm font-semibold mb-4 border border-white/15 backdrop-blur-sm">
-                Notícias
-            </span>
-            <h1 class="text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">
+            <h1 class="ct-hero-title text-3xl md:text-5xl font-display font-bold leading-tight mb-4 md:mb-5">
                 Conteúdo e atualizações
             </h1>
-            <p class="text-base md:text-lg text-white/88 mb-6 leading-relaxed max-w-xl">
+            <p class="ct-hero-copy text-base md:text-lg leading-relaxed max-w-xl">
                 Insights, novidades e temas relevantes para apoiar decisões com segurança e organização.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="/ctprice/servicos" class="px-6 py-3 bg-accent text-primary font-bold text-sm md:text-base rounded hover:bg-accent-hover transition-all shadow-lg hover:shadow-accent/30 transform hover:-translate-y-1 text-center">
-                    Ver Serviços
-                </a>
-                <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-transparent border border-white/30 text-white font-semibold text-sm md:text-base rounded hover:bg-white/10 transition-all backdrop-blur-sm text-center">
-                    Fale com um Especialista
-                </a>
-            </div>
         </div>
     </div>
 
@@ -97,20 +86,20 @@
     </div>
 </section>
 
-<section class="ct-section bg-primary-dark relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+<section class="ct-section ct-cta-surface relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
     <div class="ct-container relative z-10 text-center">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+        <h2 class="ct-cta-title text-3xl md:text-4xl font-display font-bold mb-6">
             Quer orientação prática para sua empresa?
         </h2>
-        <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+        <p class="ct-cta-copy text-lg mb-8 max-w-2xl mx-auto">
             Fale com a CT Price e transforme informação em decisão.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-5">
             <a href="https://wa.me/5567992616117" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition-all shadow-lg flex items-center justify-center">
                 <i class="fab fa-whatsapp mr-2 text-xl"></i> Falar no WhatsApp
             </a>
-            <a href="mailto:contato@ctpricems.com.br" class="px-8 py-4 bg-white text-primary-dark font-semibold rounded hover:bg-gray-100 transition-all shadow-lg flex items-center justify-center">
+            <a href="mailto:contato@ctpricems.com.br" class="ct-cta-email px-8 py-4 font-semibold rounded transition-all shadow-lg flex items-center justify-center">
                 <i class="fas fa-envelope mr-2"></i> Enviar E-mail
             </a>
         </div>
